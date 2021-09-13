@@ -1,33 +1,56 @@
 import React, {useState} from 'react';
-import { FormControl, TextField } from '@material-ui/core';
+import { FormControl} from '@material-ui/core';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Input from '@material-ui/core/Input';
+import { TransactionItem } from './TransactionItem';
+import Button from '@material-ui/core/Button';
 
 
 export const AddTransaction = () => {
 
-    const [transName, setTransName] = useState(0);
-    const [amount, setAmount] = useState("");
+    const [transName, setTransName] = useState(" ");
+    const [amount, setAmount] = useState(0);
+    const [item, setItem] = useState([]);
 
+    function handleClick() {
+        setItem(prevValue => {
+            return [...prevValue, amount]
+        })
+    }
     return (
         <div>
-            <FormControl>
-                <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
-                <Input           
-                startAdornment={<InputAdornment position="start">$</InputAdornment>}
-                value={transName}
-                onChange={(e) => setTransName(e.target.value)}
-                />
-        </FormControl>
-        <FormControl>
-        <InputLabel htmlFor="standard-adornment-amount">Transaction Name</InputLabel>
-                <Input           
-                placeholder="Water Bill"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                />
-        </FormControl>
+        <h3>History</h3>
+        <ul>
+           {
+              item.map(() => {
+                  return <TransactionItem 
+                      name={transName}
+                      amount={amount}
+                  />
+              })      
+            }
+            </ul>
+            <div>
+                <FormControl>
+                    <InputLabel >Transaction Name</InputLabel>
+                    <Input           
+                    value={transName}
+                    onChange={(e) => setTransName(e.target.value)}
+                    />
+                </FormControl>
+                <FormControl>
+                    <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
+                    <Input 
+                    startAdornment={<InputAdornment position="start">$</InputAdornment>}          
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                    />
+                </FormControl>
+            </div>
+           <Button onClick={handleClick} variant="contained" color="primary">Add Item</Button>
+           
+           
         </div>
     )
 }
