@@ -1,10 +1,10 @@
 import React from 'react'
 
-export const Balance = () => {
+export const Balance = (props) => {
     return (
         <div>
            <h4>Your Balance</h4>
-           <h1>$0.00</h1> 
+           <h1>{props.balance}</h1> 
         </div>
     )
 }

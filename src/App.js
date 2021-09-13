@@ -3,7 +3,6 @@ import { Header } from "./components/Header";
 import { Balance } from "./components/Balance";
 import { Container } from "@material-ui/core";
 import { ExpenseIncome } from "./components/ExpenseIncome";
-import { TransactionItem } from "./components/TransactionItem";
 import { AddTransaction } from "./components/AddTransaction";
 import './App.css';
 import '@fontsource/roboto';

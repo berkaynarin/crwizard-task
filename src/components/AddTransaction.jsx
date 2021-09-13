@@ -18,20 +18,23 @@ export const AddTransaction = () => {
             return [...prevValue, amount]
         })
     }
+
+
     return (
         <div>
         <h3>History</h3>
         <ul>
-           {
-              item.map(() => {
-                  return <TransactionItem 
+            {
+                item.map(() => {
+                return <TransactionItem 
                     class={item.at(-1).includes("-") ? "redHeader" : "greenHeader"}
+                    //checks the last item of an array if it has a minus sign, then change color of text depends on that
                     name={transName}
                     amount={amount}
-                  />
-              })      
+                />
+            })  
             }
-            </ul>
+        </ul>
             <div>
                 <FormControl>
                     <InputLabel >Transaction Name</InputLabel>
@@ -49,9 +52,7 @@ export const AddTransaction = () => {
                     />
                 </FormControl>
             </div>
-           <Button onClick={handleClick} variant="contained" color="primary">Add Item</Button>
-           
-           
+           <Button onClick={handleClick} variant="contained" color="primary">Add Item</Button>       
         </div>
     )
 }
