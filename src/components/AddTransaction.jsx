@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 export const AddTransaction = () => {
 
     const [transName, setTransName] = useState(" ");
-    const [amount, setAmount] = useState(0);
+    const [amount, setAmount] = useState("");
     const [item, setItem] = useState([]);
 
     function handleClick() {
@@ -25,8 +25,9 @@ export const AddTransaction = () => {
            {
               item.map(() => {
                   return <TransactionItem 
-                      name={transName}
-                      amount={amount}
+                    class={item.at(-1).includes("-") ? "redHeader" : "greenHeader"}
+                    name={transName}
+                    amount={amount}
                   />
               })      
             }

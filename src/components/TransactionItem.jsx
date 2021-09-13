@@ -4,13 +4,13 @@ import { CardContent, Typography } from '@material-ui/core';
 
 export const TransactionItem = (props) => {
     return (
-            <Card >
+            <Card>
                 <CardContent>
                     <Typography>
                         <h3>{props.name}</h3>
                     </Typography>
                     <Typography>
-                        <h4>{props.amount}</h4>
+                        <h4 className={props.class}>{props.amount}</h4>
                     </Typography>
                 </CardContent>
             </Card>
